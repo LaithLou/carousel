@@ -29,18 +29,29 @@ function Carousel({ photos, title }) {
     setCurrCardIdx(currCardIdx - 1);
   }
 
+  // know currCardIdx
+  // when 1 --> just right arrow
+  {currCardIdx === 1 && <i></i>}
+  {currCardIdx === 1 && <i></i>}
+
+  {currCardIdx === 2 && <i></i>}
+  
+  // when 3 --> just left arrow
+
   return (
     <div className="Carousel">
       <h1>{title}</h1>
       <div className="Carousel-main">
-        <i className="bi bi-arrow-left-circle" onClick={goBackward} />
+        {currCardIdx === 1 && <i></i>}
+        {currCardIdx > 1 && <i className="bi bi-arrow-left-circle" onClick={goBackward} />}
         <Card
           caption={currCard.caption}
           src={currCard.src}
           currNum={currCardIdx + 1}
           totalNum={total}
         />
-        <i className="bi bi-arrow-right-circle" onClick={goForward} />
+        {currCardIdx < 3 && <i className="bi bi-arrow-right-circle" onClick={goForward} />}
+        {currCardIdx === 3 && <i></i>}
       </div>
     </div>
   );

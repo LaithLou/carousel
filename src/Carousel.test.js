@@ -62,3 +62,31 @@ it("works when you click on the left arrow", function () {
     container.querySelector('img[alt="testing image 1"]')
   ).toBeInTheDocument();
 });
+
+// check left arrow missing on 1st image
+// .not.toHaveClass for left arrow
+
+it("left arrow doesn't display on first image", function () {
+  const { container } = render(
+    <Carousel photos={TEST_IMAGES} title="images for testing" />
+  );
+
+  const leftArrow = container.querySelector(".bi-arrow-left-circle");
+  console.log("leftArrow=", leftArrow);
+
+  expect(container).not.toBeInTheDocument(leftArrow);
+});
+
+// check right arrow missing on the 3rd image
+// .not.toHaveClass for right arrow
+
+it("right arrow doesn't display on last image", function () {
+  const { container } = render(
+    <Carousel photos={TEST_IMAGES} title="images for testing" />
+  );
+
+  const rightArrow = container.querySelector(".bi-arrow-right-circle");
+  console.log("rightArrow=", rightArrow);
+
+  expect(container).not.toBeInTheDocument(rightArrow);
+});
