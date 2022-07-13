@@ -29,6 +29,7 @@ function Carousel({ photos, title }) {
     setCurrCardIdx(currCardIdx - 1);
   }
   //TODO: at the end regardless of the length of arr
+  // 50 : crrCardIdx === pothos.lenght
   return (
     <div className="Carousel">
       <h1>{title}</h1>
@@ -43,10 +44,10 @@ function Carousel({ photos, title }) {
           currNum={currCardIdx + 1}
           totalNum={total}
         />
-        {currCardIdx < 2 && (
+        {currCardIdx < total - 1 && (
           <i className="bi bi-arrow-right-circle" onClick={goForward} />
         )}
-        {currCardIdx === 2 && <i></i>}
+        {currCardIdx === total - 1 && <i></i>}
       </div>
     </div>
   );
