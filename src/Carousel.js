@@ -28,18 +28,13 @@ function Carousel({ photos, title }) {
   function goBackward() {
     setCurrCardIdx(currCardIdx - 1);
   }
-
-  // FIXME: can't generate left arrow after image 1; can't get rid of right arrow for image 3
-  // know currCardIdx
-  // when 1 --> just right arrow
-  // when 3 --> just left arrow
-
+  //TODO: at the end regardless of the length of arr
   return (
     <div className="Carousel">
       <h1>{title}</h1>
       <div className="Carousel-main">
-        {currCardIdx === 1 && <i></i>}
-        {currCardIdx > 1 && (
+        {currCardIdx === 0 && <i></i>}
+        {currCardIdx >= 1 && (
           <i className="bi bi-arrow-left-circle" onClick={goBackward} />
         )}
         <Card
@@ -48,10 +43,10 @@ function Carousel({ photos, title }) {
           currNum={currCardIdx + 1}
           totalNum={total}
         />
-        {currCardIdx < 3 && (
+        {currCardIdx < 2 && (
           <i className="bi bi-arrow-right-circle" onClick={goForward} />
         )}
-        {currCardIdx === 3 && <i></i>}
+        {currCardIdx === 2 && <i></i>}
       </div>
     </div>
   );
